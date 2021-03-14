@@ -117,9 +117,12 @@ Mục tiêu tiếp theo: Tìm các cột tương tự trong khi tính toán ch�
 •	Sự giống nhau của cột == sự giống nhau của chữ ký
 Mục tiêu tiếp theo: Tìm các cột tương tự, Chữ ký nhỏ
 Cách tiếp cận Naïve:
+
 1) Chữ ký của các cột: tóm tắt nhỏ các cột
+
 2) Kiểm tra các cặp chữ ký để tìm các cột tương tự
 Điều cần thiết: Điểm tương đồng của chữ ký và cột có liên quan
+
 3) Tùy chọn: Kiểm tra xem các cột có chữ ký tương tự có thực sự giống nhau không
 Cảnh báo:
 So sánh tất cả các cặp có thể tốn quá nhiều thời gian: Công việc cho LSH
@@ -129,8 +132,11 @@ So sánh tất cả các cặp có thể tốn quá nhiều thời gian: Công v
 
 CỘT BĂM (CHỮ KÝ)
 Ý tưởng chính: "băm" mỗi cột C đến một chữ ký nhỏ h(C), sao cho:
+
 (1) h(C) đủ nhỏ để chữ ký phù hợp với RAM
+
 (2) sim(C1, C2) giống như "sự tương đồng" của chữ ký h(C1)  và  h(C2)
+
 Mục tiêu: Tìm hàm băm h(·) như vậy:
 
 •	Nếu sim (C1,C2)  cao, thì với prob cao. h(C1) = h(C2)
@@ -150,10 +156,9 @@ Mục tiêu: Tìm hàm băm h(·) như vậy:
 Rõ ràng, hàm băm phụ thuộc vào metric tương tự:
 Không phải tất cả các chỉ số tương tự đều có hàm băm phù hợp
 Có một hàm băm phù hợp cho Jaccard similarity: Nó được gọi là Min-Hashing
-Hãy tưởng tượng các hàng của ma trận boolean được hoán vị dưới dạng hoán vị ngẫu nhiên 
-Xác định hàm "băm"  h(C) = chỉ mục của hàng đầu tiên (theo thứ tự hoán vị ) trong đó cột C có giá trị là 1:
-			h(C) = min(C) 
-Sử dụng một số hàm băm độc lập (nghĩa là hoán vị) để tạo chữ ký của một cột
+
+![image](https://user-images.githubusercontent.com/77886298/111078116-9c273a00-8526-11eb-8224-a59d6023be98.png)
+
 
 ![image](https://user-images.githubusercontent.com/77886298/111077717-b4965500-8524-11eb-9b18-f74af6e9adc4.png)
 ![image](https://user-images.githubusercontent.com/77886298/111077729-bfe98080-8524-11eb-8d2b-ff81ec37b625.png)
@@ -172,16 +177,23 @@ Nếu là hàng loại B hoặc C thì không
 ![image](https://user-images.githubusercontent.com/77886298/111077808-1951af80-8525-11eb-9f74-a8da6a52f6c9.png)
 
 Chọn K = 100 hoán vị ngẫu nhiên của các hàng
+
 •	Sig (C) như một vectơ cột
+
 •	sig (C) [i] = theo hoán vị thứ i, chỉ số của hàng đầu tiên có số 1 trong cột C
 
 ![image](https://user-images.githubusercontent.com/77886298/111077829-2c647f80-8525-11eb-8869-f04aaa150975.png)
+
 Ghi chú : Bản phác thảo (chữ ký) của tài liệu C có kích thước nhỏ  gần bằng 100 Byte
 
 STEP 3: LOCALITY – SENSITIVE HASHING – TẬP TRUNG VÀO CÁC CHỮ KÝ TỪ CÁC TÀI LIỆU TƯƠNG TỰ
+
 Mục tiêu: Tìm tài liệu có độ tương tự ít nhất s(đối với một số ngưỡng tương tự, ví dụ: s=0.8)
+
 LSH - Ý tưởng chung: Sử dụng một hàm f (x, y) cho biết x và y có phải là một cặp ứng cử viên hay không: một cặp phần tử có độ giống nhau phải được đánh giá
+
 Đối với ma trận Min-Hash:
+
 Băm các cột của ma trận chữ ký M thành nhiều nhóm
 Mỗi cặp tài liệu được băm vào cùng một nhóm là một cặp ứng viên
 
