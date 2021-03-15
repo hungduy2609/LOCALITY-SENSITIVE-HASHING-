@@ -9,11 +9,11 @@ STEP 1: SHINGLING: CONVERT DOCUMENTS TO SETS
 TÀI LIỆU DƯỚI DẠNG DỮ LIỆU HIGH-DIM
 Các cách tiếp cận đơn giản:
 
-•	Tài liệu = tập hợp các từ xuất hiện trong tài liệu
+•Tài liệu = tập hợp các từ xuất hiện trong tài liệu
 
-•	Tài liệu = tập hợp các từ "quan trọng"
+•Tài liệu = tập hợp các từ "quan trọng"
 
-•	Không hoạt động tốt cho ứng dụng này. Tại sao?
+•Không hoạt động tốt cho ứng dụng này. Tại sao?
 
 Chú ý: Cần phải tính đến thứ tự của các từ!
 Một cách khác: Shingles!
